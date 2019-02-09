@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+use Faker\Factory as Faker;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -20,19 +22,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        require_once 'web-hub/vendor/fzaninotto/faker/src/autoload.php';
 
-        $faker = Faker/Factory::create();
+        $faker = Faker::create();
 
         $topics = array("poverty", "gender", "race", "corruption", "environment");
 
         for ($i=0; $i<20; $i++) {
-          DB::table('blogposts')->insert([
+            $firstname = $faker->firstName();
+            $lastname = $faker->lastName();
+            $topic_arr = ['Environment', 'Housing', 'Safety', 'Poverty', 'Race', 'Gender'];
+            DB::table('blogposts')->insert([
             'user_id' => 1,
             'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
-            'author' => $faker->name($gender = null|'male'|'female') ,
-            'topic' => array_rand($topics, 1),
-            'content' => $faker->paragraph($nbSentences = 8, $variableNbSentences = true)
+            'author' => "$firstname $lastname",
+            'topic' => $topic_arr[array_rand($topic_arr)],
+            'content' => $faker->paragraph($nbSentences = 2, $variableNbSentences = true)
           ]);
         }
 
