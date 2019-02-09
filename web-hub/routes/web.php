@@ -12,7 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('homepage');
 });
 
 Route::resource('blogposts', 'BlogpostController');
+
+
+// authentication routes
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
