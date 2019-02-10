@@ -27,7 +27,7 @@ class BlogpostController extends Controller
         $query = Blogpost::query();
 
         $query->groupBy('id');
-        $query->orderBy('likes', 'asc');
+        $query->orderBy('likes', 'desc');
         $tenBlogposts = $query->paginate(10);
 
 
