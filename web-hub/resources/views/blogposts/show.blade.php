@@ -18,6 +18,8 @@
 
     <p class="text"> {{ $blogpost->content}}</p> 
 
+    <a href="/blogposts/{{$blogpost->id}}/edit">Edit Article </a>
+
 
 
 @endsection
