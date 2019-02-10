@@ -20,6 +20,6 @@
     <p> Likes: {{ $blogpost-> likes}} </p>
     <a href="/blogposts/{{$blogpost->id}}/edit">Edit Article </a>
 
-
+    <br><br><br><br><br><br><br><br><br>
 
 @endsection
