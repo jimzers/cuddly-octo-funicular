@@ -102,7 +102,7 @@ class BlogpostController extends Controller
         ]);
     }
 
-    public function update(Blogpost $blogpost)
+    public function update(Request $request, Blogpost $blogpost)
     {
         /*
          * 'title' => ['required', 'min:3'],
@@ -112,7 +112,12 @@ class BlogpostController extends Controller
          */
 
         //
-        $blogpost->update(['title', 'author', 'topic', 'content']);
+        $blogpost->update([
+            'title' => $request->title,
+            'author' => $request->author,
+            'topic' => $request->topic,
+            'content' => $request->content
+        ]);
         return redirect('/blogposts');
     }
 
