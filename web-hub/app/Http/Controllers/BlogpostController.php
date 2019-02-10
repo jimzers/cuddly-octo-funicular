@@ -28,13 +28,13 @@ class BlogpostController extends Controller
 
         $query->groupBy('id');
         $query->orderBy('likes', 'asc');
-        $data = $query->paginate(10);
+        $tenBlogposts = $query->paginate(10);
 
 
 
         $allBlogposts = Blogpost::all();
         return view('blogposts.index', [
-            'blogposts' => $allBlogposts,
+            'blogposts' => $tenBlogposts,
         ]);
 
     }

@@ -20,7 +20,7 @@ class CreateBlogpostsTable extends Migration
             $table->string('title');
             $table->string('author');
             $table->string('topic');
-            $table->string('content');
+            $table->longText('content');
             $table->timestamps();
         });
     }
