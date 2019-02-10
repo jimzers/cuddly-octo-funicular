@@ -9,6 +9,8 @@
             <p>
                 Author: {{ $blogpost->author }}
                 <br>
+                Likes: {{ $blogpost->likes }}
+                <br>
                 Topic: {{ $blogpost->topic }}
             </p>
             <a href="/blogposts/{{ $blogpost->id }}">View article</a>
