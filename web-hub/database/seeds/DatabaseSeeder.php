@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             DB::table('blogposts')->insert([
             'user_id' => 1,
             'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
+            'likes' => $faker->rand(0, 1000),
             'author' => "$firstname $lastname",
             'topic' => $topic_arr[array_rand($topic_arr)],
             'content' => $faker->paragraph($nbSentences = 2, $variableNbSentences = true)

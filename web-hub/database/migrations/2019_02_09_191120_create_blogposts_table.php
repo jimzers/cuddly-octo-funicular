@@ -16,6 +16,7 @@ class CreateBlogpostsTable extends Migration
         Schema::create('blogposts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
+            $table->integer('likes');
             $table->string('title');
             $table->string('author');
             $table->string('topic');
