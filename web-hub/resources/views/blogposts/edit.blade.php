@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('partials.layout')
 
 @section('content')
     <h1 class="title">Edit Blog Post</h1>

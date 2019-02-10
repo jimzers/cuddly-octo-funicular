@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Blogpost;
 
@@ -19,9 +20,19 @@ class BlogpostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+
+        $query = Blogpost::query();
+        $sortby = in_array($request->get('sort_by'), ['created_at', 'name', 'status']) ? $request->get('sort_by') : 'updated_at';
+        $orderby = in_array($request->get('order_by'), ['asc', 'desc']) ? $request->get('order_by') : 'desc';
+
+        $query->groupBy('id');
+        $query->orderBy($sortby, $orderby);
+        $data = $query->paginate(10);
+
+
 
         $allBlogposts = Blogpost::all();
         return view('blogposts.index', [
@@ -58,6 +69,7 @@ class BlogpostController extends Controller
          */
 
         $validated = request()->validate([
+            'user_id' => Auth::id(),
             'title' => ['required', 'min:3'],
             'author' => ['required'],
             'topic' => ['required'],
