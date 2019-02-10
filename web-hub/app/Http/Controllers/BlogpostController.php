@@ -25,11 +25,9 @@ class BlogpostController extends Controller
         //
 
         $query = Blogpost::query();
-        $sortby = in_array($request->get('sort_by'), ['created_at', 'name', 'status']) ? $request->get('sort_by') : 'updated_at';
-        $orderby = in_array($request->get('order_by'), ['asc', 'desc']) ? $request->get('order_by') : 'desc';
 
         $query->groupBy('id');
-        $query->orderBy($sortby, $orderby);
+        $query->orderBy('likes', 'asc');
         $data = $query->paginate(10);
 
 
@@ -68,15 +66,21 @@ class BlogpostController extends Controller
             $table->string('content');
          */
 
-        $validated = request()->validate([
-            'user_id' => Auth::id(),
+        $validated = $request->validate([
             'title' => ['required', 'min:3'],
             'author' => ['required'],
             'topic' => ['required'],
-            'content' => ['required', 'min:3'],
+            'content' => ['required', 'min:3']
         ]);
 
-        Blogpost::create($validated);
+        Blogpost::create([
+            'user_id' => Auth::id(),
+            'title' => $request->title,
+            'author' => $request->author,
+            'topic' => $request->topic,
+            'likes' => 0,
+            'content' => $request->content
+        ]);
         return redirect('/blogposts');
 
     }
