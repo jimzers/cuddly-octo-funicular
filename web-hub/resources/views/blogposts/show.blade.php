@@ -12,12 +12,12 @@
 
 
     <h1 class="title">{{ $blogpost->title }}</h1>
-    <p class="author"> {{$blogpost->author}}</p
+    <p class="author"> {{$blogpost->author}}</p>
 
     <hr/>
 
     <p class="text"> {{ $blogpost->content}}</p> 
-
+    <p> Likes: {{ $blogpost-> likes}} </p>
     <a href="/blogposts/{{$blogpost->id}}/edit">Edit Article </a>
 
 

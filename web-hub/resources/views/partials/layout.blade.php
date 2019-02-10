@@ -3,9 +3,15 @@
 <head style="background-color: black;">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <title>Apptivism</title>
+    
 </head>
 <body>
+
+
+		<div class="jumbotron container-fluid">
+			<h1>Apptivism</h1>
+		</div>	
+	
 	<div class="container">
    <nav class="navbar navbar-expand-sm bg-light navbar-light">
   <ul class="navbar-nav">
